@@ -1,0 +1,40 @@
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.all {
+  background-color: #96c1d5;
+  padding: 2em;
+}
+
+.nothing{
+  height: 6em;
+}
+
+.title {
+  height: 15em;
+  padding: 1.5em;
+}
+
+.card {
+  padding: 2em;
+}
+
+.flecha{
+  
+  height: 2em;
+  width: 10em;
+}
+
+.docu {
+  color: #4f4aef;
+}
+
+.botonPto{
+  background-color: cadetblue;
+  height: 6em;
+  width: 20em;
+}
