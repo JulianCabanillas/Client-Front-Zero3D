@@ -1,0 +1,137 @@
+#app {
+  max-width: 1400px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.all {
+  scale: 0.96;
+  margin-top: 5rem;
+}
+.home{
+  background-image: url(../assets/subfondo2.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 50%;
+}
+
+.nothing{
+  height: 6em;
+}
+
+.title {
+  height: 20em;
+  width: 60em;
+  padding: 0.5em;
+}
+
+.card {
+  padding: 2em;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-options {
+  margin-left: 2em;
+  flex: 1;
+  background-color: #001d45;
+  color: rgb(255, 255, 255);
+  padding: 1em 1.5em;
+  border: none;
+  border-radius: 30px;
+}
+
+.table-results {
+  height: 400px;
+  width: 750px;
+  flex: 1;
+  color: rgb(0, 0, 0);
+  padding: 1em 1em;
+  border: none;
+  border-collapse: collapse;
+  
+
+}
+
+.table-options {
+  height: 400px;
+  width: 800px;
+  flex: 1;
+  background-color: rgba(115, 105, 0, 0.322);
+  margin-right: 20px;
+  margin-left: 40px;
+  border: none;
+  border-collapse: collapse;
+  padding: 1em 1em;
+}
+
+.p-option {
+  margin-left: 4em;
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+
+.p-result {
+  margin-left: 4em;
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+
+.boton-pto {
+  flex: 1;
+  margin-top: 2em;
+  background-color: rgb(106, 160, 95);
+  height: 8em;
+  width: 40em;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.boton-up {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  flex: 1;
+  background-color: #fbff00a3;
+  height: 7em;
+  color: rgb(255, 255, 255);
+  padding: 1em 2em;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.flecha{
+  align-items: center;
+  height: 6em;
+  width: 28em;
+}
+
+
+
+.bar-progress{
+  margin-top: 2em;
+  height: 6em;
+  width: 50em;
+  accent-color: #c0d806;
+  
+}
+
+.docu {
+  color: #4f4aef;
+}
+
+.hr-margin{
+  margin-top: 4em;
+  margin-bottom: 4em;
+}

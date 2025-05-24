@@ -1,0 +1,10 @@
+.all {
+  scale: 0.96;
+  margin-top: 5rem;
+}
+
+.title {
+  height: 20em;
+  width: 60em;
+  padding: 0.5em;
+}

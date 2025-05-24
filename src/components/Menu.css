@@ -1,0 +1,56 @@
+.menu-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    background-color: #d765809d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+    z-index: 1000; 
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    gap: 0.5rem;
+    display: flex;
+    padding: 2rem auto;
+}
+
+.menu-left a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+
+}
+
+.menu-left a:hover {
+    color: #dedb17;
+}
+
+.menu-right {
+    display: flex;
+    gap: 1.5rem; 
+}
+
+.menu-right h2 {
+    padding-right: 2rem;
+}
+
+.menu-right a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.menu-right a:hover {
+    color: #0077ff;
+}

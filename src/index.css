@@ -20,7 +20,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(-45deg, #173c88,#173c88,#173c88,#173c88,#173c88,#173c88,#1f53bb,#173c88,#173c88,#173c88,#173c88,#173c88, #173c88);
+  background: linear-gradient(-45deg, #173c88,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88, #173c88);
   background-size: 150% 150%;
   animation: gradient 10s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
   font-family: system-ui;
@@ -83,15 +83,18 @@ button {
   background-color: #000000;
   cursor: pointer;
   transition: border-color 0.25s;
+  
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: #324d6010;
+  background-color: #bccd3b;
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  background-color: #00000023;
 }
 
 @media (prefers-color-scheme: light) {
