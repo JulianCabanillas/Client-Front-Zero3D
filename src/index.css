@@ -20,13 +20,16 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("./assets/fondo.png");
-  background-color: #f3f3ad;
+  background: linear-gradient(-45deg, #004196, #000e21, #0041968f, #000e21, #004196);
+  background-size: 150% 150%;
+  animation: gradient 5s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
   font-family: sans-serif;
 }
 
-p {
-  font-size: 1.5em;
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1 {
@@ -36,15 +39,15 @@ h1 {
 }
 
 h2 {
-  font-size: 2.2em;
+  font-size: 2.6em;
   line-height: 1;
   color: #000000;
 }
 
 h3 {
   font-size: 1 em;
-  line-height: 1;
-  color: #bd8100;
+  line-height: 1.2;
+  color: #ffffff;
 }
 
 table {
@@ -59,9 +62,8 @@ table {
 select {
   border-radius: 8px;
   border: 2px solid ;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  font-size: 2em;
+  font-weight: 200;
   font-family: inherit;
 }
 

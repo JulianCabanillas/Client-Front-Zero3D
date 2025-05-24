@@ -1,5 +1,5 @@
 #app {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -7,6 +7,7 @@
 
 .all {
   background-color: #a8c6d4;
+  background-image: url("./assets/subfondo.png");
   padding: 2em;
 }
 
@@ -15,9 +16,9 @@
 }
 
 .title {
-  height: 10em;
-  width: 45em;
-  padding: 1.5em;
+  height: 20em;
+  width: 60em;
+  padding: 0.5em;
 }
 
 .card {
@@ -28,50 +29,87 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 }
 
 .selectOptions {
   margin-left: 2em;
-  flex: 0.3;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  padding: 1em 2em;
+  flex: 0;
+  background-color: rgba(0, 15, 88, 0.551);
+  color: rgb(255, 255, 255);
+  padding: 1em 1em;
   border: none;
   border-radius: 50px;
+}
+
+.tableResults {
+  height: 400px;
+  width: 600px;
+  flex: 1;
+  color: rgb(0, 0, 0);
+  margin-right: 20px;
+  padding: 1em 1em;
+  border: none;
+  border-collapse: collapse;
+  
 
 }
 
+.tableOptions {
+  height: 400px;
+  width: 450px;
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.116);
+  margin-right: 20px;
+  margin-left: 20px;
+  border: none;
+  border-collapse: collapse;
+  padding: 1em 2em;
+}
 .pOption {
-  text-align: right;
+  margin-left: 1em;
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+
+.pResult {
+  text-align: left;
   color: rgb(0, 0, 0);
 }
 
 .botonPto {
   flex: 0.3;
+  margin-top: 2em;
   background-color: rgb(106, 160, 95);
   height: 6em;
   width: 20em;
   color: rgb(255, 255, 255);
-  padding: 1em 2em;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 2em;
 }
 
-.tableOptions {
+.botonUp {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   flex: 1;
-  margin-right: 20px;
+  background-color: rgba(0, 15, 88, 0.551);;
+  height: 4em;
+  width: 20em;
+  color: rgb(255, 255, 255);
+  padding: 1em 2em;
   border: none;
-  border-collapse: collapse;
-  padding: 2em;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 2em;
 }
 
 .flecha{
   align-items: center;
-  height: 2em;
-  width: 10em;
+  height: 6em;
+  width: 25em;
 }
 
 .docu {
