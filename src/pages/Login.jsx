@@ -1,9 +1,14 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
+import axios from 'axios';
 
 import './Login.css'
 
 export default function Login() {
+
+  const API_URL = 'http://localhost:8000';
+
+  const [message, setMessage] = useState('');
   
   const [state, setState] = useState({
     user:'',
@@ -12,23 +17,44 @@ export default function Login() {
     direct:''
   });
   
-  const onSubmitLogin = e => {
-    alert("Accion login");
+  const onSubmitLogin = async e => {
     e.preventDefault();
-    console.log('LOGIN');
-    console.log('User:', state.user);
-    console.log('Password:', state.password);
+    setMessage("Login...");
+    try {
+      const response = await axios.post(`$API_URL/api/login/`,{
+        username: state.user,
+        password: state.password
+      });
+      setMessage("Login exitoso");
+      console.log('Respuesta:', response.data);
+    } catch (error){
+      setMessage("Error al iniciar sesion");
+      alert("Error al iniciar sesion");
+      console.error('Error en la peticion:', error.response?.data || error.message);
+    }
   }
 
-  const onSubmitRegistrer = e => {
-    alert("Accion registro");
-    e.preventDefault();
-    console.log('REGISTRER');
-    console.log('User:', state.user);
-    console.log('Password:', state.password);
-    console.log('Email:', state.email);
-    console.log('Direccion:', state.direct);
+const onSubmitRegistrer = async e => {
+  e.preventDefault();
+  setMessage("Registrando...");
+  try {
+    const response = await axios.post(`${API_URL}/api/register/`, {
+      username: state.user,
+      password: state.password,
+      email: state.email,
+      direction: state.direct,
+      date_register: new Date().toISOString().split('T')[0]  // Fecha actual
+    });
+    setMessage("Registro exitoso");
+    console.log('Respuesta:', response.data);
+  } catch (error) {
+    setMessage("Error al registrar");
+    alert("Error al registrar");
+    console.error('Error:', error.response?.data || error.message);
   }
+};
+
+  
 
   const onChange = e => {
     const {name,value} = e.target;
@@ -69,8 +95,10 @@ export default function Login() {
         </tbody>
       </table>
       <div style="margin-top: 20px;">
-      <p>Estado actual:</p>
-      <pre><p>{JSON.stringify(state, null, 2)}</p></pre>
+      <p></p>
+      <div style="margin-top: 20px;">
+        <p>Estado actual: {message}</p>
+      </div>
     </div>
     </div>
   );
