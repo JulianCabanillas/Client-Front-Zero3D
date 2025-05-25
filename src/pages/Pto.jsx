@@ -15,7 +15,8 @@ export default function Pto() {
     
     return (
         <div className="all">
-            <h1>Calcula presupuesto al momento!!</h1>
+            <h1 style={'color:rgba(255, 170, 0, 0.9)'}>CALCULADORA</h1>
+            <h2>Elige tu archivo .stl, elige las opciones que desees y calcula precio del pedido!</h2>
             <div className="options-container">
                 <img src={flechaDer} className="flecha" alt="flechaDerecha" />
                 <button class="boton-up">
@@ -23,10 +24,11 @@ export default function Pto() {
                 </button>
                 <img src={flechaIzq} className="flecha" alt="flechaIzquierda" />
             </div>
+            <p>Solo archivos .stl!</p>
             <div className="options-container">
                 <table className="table-options">
                 <caption>
-                    <h1><b>Elige tus opciones:</b></h1>
+                    <h1 style={'color:rgba(255, 170, 0, 0.9)'}><b>Elige tus opciones:</b></h1>
                 </caption>
                 <tbody>
                     <tr>
@@ -46,7 +48,7 @@ export default function Pto() {
                     <tr>
                     <th>
                         <p className="p-option">
-                        <h2>🏎️ Velocidad: </h2>
+                        <h2>🚴 Velocidad: </h2>
                         </p>
                     </th>
                     <th>
@@ -79,9 +81,9 @@ export default function Pto() {
                 <div className="options-container">
                     <table class="table-results">
                     <caption>
-                        <h1><b>Resultados:</b></h1>
+                        <h1 style={'color:rgba(255, 170, 0, 0.9)'}><b>Resultados:</b></h1>
                     </caption>
-                    <tr><h1>----------------------------------------------</h1></tr>
+                    <tr><h1 style={'color:rgba(255, 170, 0, 0.8)'}>----------------------------------------------</h1></tr>
                     <tr>
                         <th>
                         <p className="p-result">
@@ -118,7 +120,7 @@ export default function Pto() {
                         </p>
                         </th>
                     </tr>
-                    <tr><h1>----------------------------------------------</h1></tr>
+                    <tr><h1 style={'color:rgba(255, 170, 0, 0.8)'}>----------------------------------------------</h1></tr>
                     </table> 
                 </div>
             </div>

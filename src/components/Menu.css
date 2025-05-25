@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     height: 55px;
-    background-color: #eb8ba29d;
+    background-color: #f0a81887;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
     z-index: 1000; 
     padding: 1rem 2rem;
@@ -15,23 +15,25 @@
     display: flex;
     justify-content: space-between;
     max-width: 1300px;
+    min-width: 800px;
     margin: 0 auto;
 }
 
 .menu-left a {
     text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
+    color: #141821;
+    font-weight: 900;
 
 }
 
 .menu-left a:hover {
-    color: #dedb17;
+    color: #deb017;
 }
 
 .menu-right {
     display: flex;
-    gap: 1.5rem; 
+    gap: 1.5rem;
+    margin-right: 20px; 
 }
 
 .menu-right h2 {
@@ -40,10 +42,10 @@
 
 .menu-right a {
     text-decoration: none;
-    color: #ffffff;
+    color: #141821;
     font-weight: 500;
 }
 
 .menu-right a:hover {
-    color: #0077ff;
+    color: #deb017;
 }

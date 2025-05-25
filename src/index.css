@@ -5,7 +5,10 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(-45deg, #173c88,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88, #173c88);
+  /*background: linear-gradient(-45deg, #173c88,#173c88,#173c88,#1f53bb,hwb(220 9% 47%),#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88, #173c88);
+  background: linear-gradient(-45deg, #181848,#181848,#181848,#304878,#181848,#181848,#181848,#181848,#181848,#304878,#181848,#181848, #181848);
+  */
+  background: linear-gradient(-45deg, #141821,#141821,#141821,#1e293e,#141821,#141821,#141821,#141821,#141821,#1e293e,#141821,#141821, #141821);
   background-size: 150% 150%;
   animation: gradient 10s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
 
@@ -15,12 +18,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 800px;
   min-height: 100vh;
   background-image: url(./assets/logo-grande.png);
   background-size: 150% 150%;
@@ -94,16 +96,16 @@ textarea {
 }
 
 select:hover {
-  background-color: #1d1db8;
-}
-button:hover {
-  background-color: #bccd3b;
+  background-color: #4c5c85;
 }
 
-button:focus,
-button:focus-visible {
+button:hover {
+  background-color: #f0a81887;
+}
+button:active{
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
