@@ -2,9 +2,9 @@ import { useState } from 'preact/hooks';
 import flechaIzq from '../assets/flechaIzq.png'
 import flechaDer from '../assets/flechaDer.png'
 
-import './Presu.css'
+import './Pto.css'
 
-export default function Presu() {
+export default function Pto() {
     
     const [archiveStl, setArchiveStl] = useState(null);
     const [velocity, setVelocity] = useState(null);
@@ -127,11 +127,6 @@ export default function Presu() {
                 
             </button>
             <progress className="bar-progress" value="10" max="100"></progress>
-            <hr className="hr-margin"></hr>
-            <p>Realizado por Julián Cabanillas Blanco</p>
-            <p>Proyecto final grado DAM</p>
-            <p>OpenSource</p>
-        
         </div>
     );
 }

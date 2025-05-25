@@ -1,6 +1,6 @@
 .all {
-  scale: 0.96;
-  margin-top: 5rem;
+  scale: 0.95;
+  margin-top: 6rem;
 }
 
 .nothing{
@@ -101,7 +101,7 @@
 .flecha{
   align-items: center;
   height: 6em;
-  width: 28em;
+  width: 30em;
 }
 
 .bar-progress{

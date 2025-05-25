@@ -9,16 +9,16 @@ const Menu = () => {
       <nav className="menu">
         <div className="menu-left">
           <a href="/" className="logo">
+            
             <h2>
-              <img src={logo} alt="Logo Zero3D" width="32" />
-              <a href="/">Home</a>
+              <a href="/">🏠 Home</a>
             </h2>
           </a>
         </div>
         <div className="menu-right">
-          <h2><a href="/presu">Imprimir</a></h2>
-          <h2><a href="/about">Conócenos</a></h2>
-          <h2><a href="/login">Login</a></h2>
+          <h2><a href="/pto">🖨️ Imprimir</a></h2>
+          <h2><a href="/about">👥 Conócenos</a></h2>
+          <h2><a href="/login">👁️ Login</a></h2>
         </div>
       </nav>
     </header>

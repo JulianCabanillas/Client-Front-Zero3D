@@ -1,8 +1,8 @@
 #app {
   max-width: 1400px;
-
   margin: 0 auto;
   text-align: center;
+  
 }
 
 .all {
@@ -13,17 +13,16 @@
   background-image: url(../assets/subfondo2.png);
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 50%;
+  background-size: 75%;
 }
 
 .nothing{
-  height: 6em;
+  margin-top: 248px;
 }
 
 .title {
   height: 20em;
   width: 60em;
-  padding: 0.5em;
 }
 
 .card {

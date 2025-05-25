@@ -5,7 +5,9 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(-45deg, #173c88,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88, #173c88);
+  background-size: 150% 150%;
+  animation: gradient 10s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,9 +22,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(-45deg, #173c88,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88,#1f53bb,#173c88,#173c88, #173c88);
+  background-image: url(./assets/logo-grande.png);
   background-size: 150% 150%;
-  animation: gradient 10s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
   font-family: system-ui;
 }
 
@@ -86,15 +87,22 @@ button {
   
 }
 
+input,
+textarea {
+  height: 50px;
+  width: 300px;
+}
+
+select:hover {
+  background-color: #1d1db8;
+}
 button:hover {
-  border-color: #324d6010;
   background-color: #bccd3b;
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-  background-color: #00000023;
 }
 
 @media (prefers-color-scheme: light) {

@@ -8,3 +8,26 @@
   width: 60em;
   padding: 0.5em;
 }
+
+.table-results {
+  height: 400px;
+  width: 750px;
+  flex: 1;
+  color: rgb(0, 0, 0);
+  padding: 1em 1em;
+  border: none;
+  border-collapse: collapse;
+  
+
+}
+
+.invisible{
+  visibility: hidden;
+}
+
+.botton-entrar {
+  background-color: rgb(65, 93, 237);
+  color: white;
+  width: 150px;
+  height: 50px;
+}

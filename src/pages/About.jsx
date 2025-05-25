@@ -1,5 +1,4 @@
 import { h } from 'preact';
-
 import video from '../assets/video-presentacion.mp4'
 import './About.css'
 
