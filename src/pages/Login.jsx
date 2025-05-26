@@ -8,7 +8,7 @@ export default function Login() {
 
   const API_URL = 'http://localhost:8000';
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('Esperando...');
   
   const [state, setState] = useState({
     user:'',
@@ -21,15 +21,15 @@ export default function Login() {
     e.preventDefault();
     setMessage("Login...");
     try {
-      const response = await axios.post(`$API_URL/api/login/`,{
+      const response = await axios.post(`${API_URL}/api/login/`,{
         username: state.user,
         password: state.password
       });
       setMessage("Login exitoso");
       console.log('Respuesta:', response.data);
     } catch (error){
-      setMessage("Error al iniciar sesion");
-      alert("Error al iniciar sesion");
+      setMessage("Usuario o password no es correcto.");
+      alert("Usuario o password no es correcto.");
       console.error('Error en la peticion:', error.response?.data || error.message);
     }
   }
