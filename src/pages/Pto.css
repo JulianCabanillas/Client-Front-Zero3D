@@ -74,8 +74,8 @@
   flex: 1;
   margin-top: 2em;
   background-color: rgb(65, 93, 237);
-  height: 8em;
-  width: 40em;
+  height: 6em;
+  width: 30em;
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 50px;
@@ -90,7 +90,7 @@
   margin-right: 0.5em;
   flex: 1;
   background-color: rgb(65, 93, 237);
-  height: 7em;
+  height: 4em;
   color: rgb(255, 255, 255);
   padding: 1em 2em;
   border: none;
