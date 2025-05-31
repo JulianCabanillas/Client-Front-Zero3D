@@ -78,7 +78,7 @@
   width: 30em;
   color: rgb(255, 255, 255);
   border: none;
-  border-radius: 50px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 1em;
 }
@@ -90,13 +90,13 @@
   margin-right: 0.5em;
   flex: 1;
   background-color: rgb(65, 93, 237);
-  height: 4em;
+  height: 80px;
   color: rgb(255, 255, 255);
   padding: 1em 2em;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 18px;
 }
 
 .flecha{
@@ -110,7 +110,7 @@
   height: 6em;
   width: 50em;
   accent-color: #f0a81887;
-  
+  transition: width 0.1s linear;
 }
 
 .docu {

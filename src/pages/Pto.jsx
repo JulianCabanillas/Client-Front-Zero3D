@@ -16,6 +16,7 @@ export default function Pto() {
     const [materialRequired, setMaterialRequired] = useState (null);
     const [time, setTime] = useState(null);
     const [pto, setPto] = useState(null);
+    const [messageStl, setMessageStl] = useState('Solo archivos .stl!')
     const [activeOrder, setActiveOrder] = useState(false);
     const [loading, setLoading] = useState(false);
     const [progress, setProgress] = useState(0);
@@ -35,6 +36,18 @@ export default function Pto() {
     // Damos tambien formato a la moneda (Utilizamos la clase Intl para dar formato de currency):
     const formatCurrency = c => c != null ? new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(c): '';
 
+    // Formato al tamaño del archivo:
+    function sizeFile (byte){
+        if(byte <0 || byte === 0){
+            return '0 Bytes';
+        }
+        const kB = 1024;
+        const d = 2;
+        const unit = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        const i = Math.floor(Math.log(byte) / Math.log(kB));
+        const size = parseFloat((byte / Math.pow(kB, i)).toFixed(d));
+        return `${size} ${unit[i]}`;
+    }
     
 
 // Utilizamos un handle para actualizar el cambio con la seleccion del archivo:
@@ -44,7 +57,14 @@ export default function Pto() {
         // Comprobamos que el archivo solo sea .stl, sino mostramos alerta de navegador:
         if(file && file.name.endsWith('.stl')){
             setArchiveStl(file);
+            setMessageStl(
+                <h2 style={{fontSize: '18px'}}> {file.name} - {sizeFile(file.size)}</h2>
+            );
         } else {
+            setArchiveStl(null)
+            setMessageStl(
+                <h2 style={"font-size: 18px"}>Archivo elegido: No se ha seleccionado ningún archivo.</h2>
+            );
             alert('Solo se permiten archivos .stl');
         }
     };
@@ -107,7 +127,7 @@ export default function Pto() {
             });
 
             // Utilizamos el metodo json para recuperar los datos del Response:
-            const data = await res.data;
+            const data = res.data;
 
             // Actualizamos los valores para mostralos al usuario:
             setTime(data.time ?? null);
@@ -124,9 +144,12 @@ export default function Pto() {
         } catch (err) {
             console.error('Error en el calculo:', err);
             alert("Error al calcular el presupuesto.");
-        }finally {
-            
-        };
+            if (simulatedTimer){
+                clearInterval(simulatedTimer);
+            }
+            setProgress(0);
+            setLoading(false);
+        }
     }
 
 
@@ -147,7 +170,7 @@ export default function Pto() {
                 <label htmlFor="fileInput" className="boton-up"><h2>Subir archivo... 📤</h2></label>
                 <img src={flechaIzq} className="flecha" alt="flechaIzquierda" />
             </div>
-            <p>Solo archivos .stl!</p>
+            <h2 style={{ fontSize: '18px'}}>{messageStl}</h2>
             <div className="options-container">
                 <table className="table-options">
                 <caption>

@@ -75,20 +75,6 @@ select {
   font-family: inherit;
 }
 
-
-button {
-  border-radius: 8px;
-  border: 2px solid ;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #000000;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  
-}
-
 input,
 textarea {
   height: 50px;
