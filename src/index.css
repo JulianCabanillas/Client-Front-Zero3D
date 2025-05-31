@@ -98,7 +98,9 @@ textarea {
 select:hover {
   background-color: #4c5c85;
 }
-
+label:hover {
+  background-color: #f0a81887;
+}
 button:hover {
   background-color: #f0a81887;
 }

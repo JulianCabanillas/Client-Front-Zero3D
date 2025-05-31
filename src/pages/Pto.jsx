@@ -66,6 +66,8 @@ export default function Pto() {
         formData.append('material', material);
         formData.append('velocity', velocity);
 
+        let simulatedTimer = null;
+
         // Lanzamos dentro de un try para la captura de exceptions:
         try {
             
@@ -77,16 +79,32 @@ export default function Pto() {
             // Realizamos la peticion y añadimos el parametro onUploadProgress con una lambda 
             // para el progreso de la barra:
             const res = await axios.post(`${API_URL}/api/calculate/`, formData, {
+                
                 onUploadProgress: e => {
-                    const pct = Math.round((e.loaded * 100) / e.total);
-                    setProgress(pct);
+                    const pct = Math.round((e.loaded * 40) / e.total);
+                    if(pct<=40){
+                        setProgress(pct);
+                    }
+                    
+
+                    if(e.loaded === e.total && simulatedTimer === null){
+                        setProgress(40)
+
+                        simulatedTimer = setInterval(
+                            () =>{
+                                setProgress(
+                                    prev => {
+                                        if(prev < 90){
+                                            return prev + 2;
+                                        } else{
+                                            clearInterval(simulatedTimer)
+                                            return 90
+                                        }
+                                    });
+                            }, 100);
+                    }
                 }
             });
-
-            // Cuando termina la carga seteamos estos valores:
-            setProgress(100);
-            setLoading(false);
-            setActiveOrder(true);
 
             // Utilizamos el metodo json para recuperar los datos del Response:
             const data = await res.data;
@@ -95,6 +113,14 @@ export default function Pto() {
             setTime(data.time ?? null);
             setMaterialRequired(data.material_required ?? null);
             setPto(data.total_price ?? null);
+
+            // Cuando termina la carga seteamos estos valores:
+            if (simulatedTimer) {
+                clearInterval(simulatedTimer);
+            }
+            setProgress(100);
+            setLoading(false);
+            setActiveOrder(true);
         } catch (err) {
             console.error('Error en el calculo:', err);
             alert("Error al calcular el presupuesto.");
@@ -152,9 +178,13 @@ export default function Pto() {
                     <th>
                         <select className="select-options" name="velocityChoose" id="velocityIdChoose"
                             onChange={e => setVelocity(e.target.value)}>
-                        <option value="30">300m/ms</option>
-                        <option value="60">600m/ms</option>
-                        <option value="90">900m/ms</option>
+                        <option value="30">30m/ms</option>
+                        <option value="40">40m/ms</option>
+                        <option value="50">50m/ms</option>
+                        <option value="60">60m/ms</option>
+                        <option value="70">70m/ms</option>
+                        <option value="80">80m/ms</option>
+                        <option value="90">90m/ms</option>
                         </select>
                     </th>
                     </tr>
@@ -247,7 +277,7 @@ export default function Pto() {
             
             <form>
                 <button type="submit" className="boton-pto" disabled={!activeOrder} style={{ visibility: activeOrder ? 'visible' : 'hidden' }}>
-                    <h2>REALIZAR Pedido!! ▶️</h2>
+                    <h2>✅ ¡REALIZAR Pedido! ✅</h2>
                 </button>
             </form>
                                 
