@@ -8,7 +8,6 @@ import './Pto.css'
 export default function Pto() {
 
 // Constantes y variables de estado:
-    const API_URL = 'http://localhost:8000';
     const [archiveStl, setArchiveStl] = useState(null);
     const [velocity, setVelocity] = useState('30');
     const [material, setMaterial] = useState('pla');
@@ -98,7 +97,7 @@ export default function Pto() {
 
             // Realizamos la peticion y añadimos el parametro onUploadProgress con una lambda 
             // para el progreso de la barra:
-            const res = await axios.post(`${API_URL}/api/calculate/`, formData, {
+            const res = await axios.post(`/api/calculate/`, formData, {
                 
                 onUploadProgress: e => {
                     const pct = Math.round((e.loaded * 40) / e.total);
