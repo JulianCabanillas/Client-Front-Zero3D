@@ -21,7 +21,7 @@ export default function Login() {
     e.preventDefault();
     setMessage("Login...");
     try {
-      const response = await axios.post(`${API_URL}/api/login/`,{
+      const response = await axios.post(`/api/login/`,{
         username: state.user,
         password: state.password
       });
@@ -38,7 +38,7 @@ const onSubmitRegistrer = async e => {
   e.preventDefault();
   setMessage("Registrando...");
   try {
-    const response = await axios.post(`${API_URL}/api/register/`, {
+    const response = await axios.post(`/api/register/`, {
       username: state.user,
       password: state.password,
       email: state.email,
