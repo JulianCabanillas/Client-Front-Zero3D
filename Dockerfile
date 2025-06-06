@@ -22,7 +22,7 @@ RUN mkdir -p /usr/share/nginx/html
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Si tienes un default.conf personalizado, cópialo también (ajusta la ruta si hiciera falta):
-# COPY ./default.conf /etc/nginx/conf.d/default.conf
+#COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # Expone el puerto 80 para el servicio HTTP
 EXPOSE 80
