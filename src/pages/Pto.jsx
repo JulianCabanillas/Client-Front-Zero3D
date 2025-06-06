@@ -238,10 +238,10 @@ export default function Pto() {
                         <tbody>
                             <tr>
                                 <th>
-                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
                                 </th>
                                 <th>
-                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
                                 </th>
                             </tr>    
                             <tr>
@@ -282,10 +282,10 @@ export default function Pto() {
                             </tr>
                             <tr>
                                 <th>
-                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
                                 </th>
                                 <th>
-                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
                                 </th>
                             </tr>
                         </tbody>    

@@ -108,6 +108,8 @@
 .bar-progress{
   margin-top: 2em;
   height: 6em;
+  min-height: 6em;
+  min-width: 50em;
   width: 50em;
   accent-color: #f0a81887;
   transition: width 0.1s linear;

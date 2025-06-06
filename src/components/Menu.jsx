@@ -1,6 +1,6 @@
 // Menu.jsx
 import { h } from 'preact';
-import logo from '../assets/icono.png'
+import logo from '../assets/home.png'
 import { Link } from 'preact-router'; 
 import './Menu.css'
 
@@ -12,7 +12,7 @@ const Menu = () => {
           <a href="/" className="logo">
             
             <h2>
-              <Link href="/" >🏠 Home</Link>
+              <Link href="/" ><img src={logo} alt="Logo" className='logo' /></Link>
             </h2>
           </a>
         </div>
