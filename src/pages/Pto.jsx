@@ -8,7 +8,6 @@ import './Pto.css'
 export default function Pto() {
 
 // Constantes y variables de estado:
-    const API_URL = 'http://localhost:8000';
     const [archiveStl, setArchiveStl] = useState(null);
     const [velocity, setVelocity] = useState('30');
     const [material, setMaterial] = useState('pla');
@@ -179,9 +178,9 @@ export default function Pto() {
                 <tbody>
                     <tr>
                     <th>
-                        <p className="p-option">
+                        <div className="p-option">
                         <h2>🌳 Material: </h2>
-                        </p>
+                        </div>
                     </th>
                     <th>
                         <select className="select-options" name="materialChoose" id="materialIdChoose"
@@ -194,9 +193,9 @@ export default function Pto() {
                     </tr>
                     <tr>
                     <th>
-                        <p className="p-option">
+                        <div className="p-option">
                         <h2>🚴 Velocidad: </h2>
-                        </p>
+                        </div>
                     </th>
                     <th>
                         <select className="select-options" name="velocityChoose" id="velocityIdChoose"
@@ -213,9 +212,9 @@ export default function Pto() {
                     </tr>
                     <tr>
                     <th>
-                        <p className="p-option">
+                        <div className="p-option">
                         <h2>🔰 Color:</h2>
-                        </p>
+                        </div>
                     </th>
                     <th>
                         <select className="select-options" name="colorChoose" id="colorIdChoose"
@@ -236,58 +235,60 @@ export default function Pto() {
                     <caption>
                         <h1 style={{color:'rgba(255, 170, 0, 0.9)'}}><b>Resultados:</b></h1>
                     </caption>
-                    <tr>
-                        <th>
-                            <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
-                        </th>
-                        <th>
-                            <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
-                        </th>
-                    </tr>    
-                    <tr>
-                        <th>
-                        <p className="p-result">
-                            <h2>⏰ Tiempo:</h2>
-                        </p>
-                        </th>
-                        <th>
-                        <p className="p-result">
-                            <h2>{time != null ? formatTime(time) : ''}</h2>
-                        </p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                        <p className="p-result">
-                            <h2>⚱️ Cantidad material:</h2>
-                        </p>
-                        </th>
-                        <th>
-                        <p className="p-result">
-                            <h2>{materialRequired != null ? formatMaterial(materialRequired) : ''}</h2>
-                        </p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                        <p className="p-result">
-                            <h2>💶 Precio:</h2>
-                        </p>
-                        </th>
-                        <th>
-                        <p className="p-result">
-                            <h2>{pto != null ? formatCurrency(pto) : ''}</h2>
-                        </p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
-                        </th>
-                        <th>
-                            <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-----------------------</h1>
-                        </th>
-                    </tr>    
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
+                                </th>
+                                <th>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
+                                </th>
+                            </tr>    
+                            <tr>
+                                <th>
+                                <div className="p-result">
+                                    <h2>⏰ Tiempo:</h2>
+                                </div>
+                                </th>
+                                <th>
+                                <div className="p-result">
+                                    <h2>{time != null ? formatTime(time) : ''}</h2>
+                                </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                <div className="p-result">
+                                    <h2>⚱️ Cantidad material:</h2>
+                                </div>
+                                </th>
+                                <th>
+                                <div className="p-result">
+                                    <h2>{materialRequired != null ? formatMaterial(materialRequired) : ''}</h2>
+                                </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                <div className="p-result">
+                                    <h2>💶 Precio:</h2>
+                                </div>
+                                </th>
+                                <th>
+                                <div className="p-result">
+                                    <h2>{pto != null ? formatCurrency(pto) : ''}</h2>
+                                </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
+                                </th>
+                                <th>
+                                    <h1 style={{color:'rgba(255, 170, 0, 0.8)'}}>-------------------</h1>
+                                </th>
+                            </tr>
+                        </tbody>    
                     </table> 
                 </div>
             </div>

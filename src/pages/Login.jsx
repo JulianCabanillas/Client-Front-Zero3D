@@ -6,7 +6,6 @@ import './Login.css'
 
 export default function Login() {
 
-  const API_URL = 'http://localhost:8000';
 
   const [message, setMessage] = useState('Esperando...');
   
