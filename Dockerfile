@@ -6,7 +6,8 @@ COPY . .
 RUN npm run build
 
 
-FROM nginx:1.27-alpine              
-COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80                           
-CMD ["nginx", "-g", "daemon off;"]  
+FROM alpine:3.18
+WORKDIR /dist
+RUN mkdir -p /dist
+COPY --from=builder /app/dist /dist
+CMD ["true"]
