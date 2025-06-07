@@ -1,57 +1,61 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
-import axios from 'axios';
+import { route } from 'preact-router';
+import api from '../utils/api';      // ⬅️ nuestro Axios centralizado
+import { setAccess } from '../auth'; // ⬅️ guarda el access en memoria
 
 import './Login.css'
 
 export default function Login() {
 
 
-  const [message, setMessage] = useState('Esperando...');
-  
-  const [state, setState] = useState({
-    user:'',
-    password:'',
-    email:'',
-    direct:''
-  });
-  
-  const onSubmitLogin = async e => {
-    e.preventDefault();
-    setMessage("Login...");
-    try {
-      const response = await axios.post(`/api/login/`,{
-        username: state.user,
-        password: state.password
-      });
-      setMessage("Login exitoso");
-      console.log('Respuesta:', response.data);
-    } catch (error){
-      setMessage("Usuario o password no es correcto.");
-      alert("Usuario o password no es correcto.");
-      console.error('Error en la peticion:', error.response?.data || error.message);
-    }
-  }
-
-const onSubmitRegistrer = async e => {
-  e.preventDefault();
-  setMessage("Registrando...");
-  try {
-    const response = await axios.post(`/api/register/`, {
-      username: state.user,
-      password: state.password,
-      email: state.email,
-      direction: state.direct,
-      date_register: new Date().toISOString().split('T')[0]  // Fecha actual
+    const [message, setMessage] = useState('Esperando...');
+    
+    const [state, setState] = useState({
+      user:'',
+      password:'',
+      email:'',
+      direct:''
     });
-    setMessage("Registro exitoso");
-    console.log('Respuesta:', response.data);
-  } catch (error) {
-    setMessage("Error al registrar");
-    alert("Error al registrar");
-    console.error('Error:', error.response?.data || error.message);
-  }
-};
+    
+    const onSubmitLogin = async e => {
+      e.preventDefault();
+      setMessage("Login...");
+      try {
+        const response = await api.post('/login_client/', {
+          username: state.user,
+          password: state.password
+        });
+        setAccess(response.data.access); // 💾 guarda sólo en memoria
+        setMessage("Login exitoso");
+        route('/');                      // 👉 redirige a la página principal
+      } catch (error){
+        setMessage("Usuario o password no es correcto.");
+        alert("Usuario o password no es correcto.");
+        console.error('Error en la peticion:', error.response?.data || error.message);
+      }
+    }
+
+  const onSubmitRegistrer = async e => {
+    e.preventDefault();
+    setMessage("Registrando...");
+    try {
+      const response = await api.post('/register_client/', {
+        username: state.user,
+        password: state.password,
+        email: state.email,
+        direction: state.direct,
+        date_register: new Date().toISOString().split('T')[0]  // Fecha actual
+      });
+      setMessage("Registro exitoso");
+      console.log('Respuesta:', response.data);
+      onSubmitLogin(e)
+    } catch (error) {
+      setMessage("Error al registrar");
+      alert("Error al registrar");
+      console.error('Error:', error.response?.data || error.message);
+    }
+  };
 
   
 
