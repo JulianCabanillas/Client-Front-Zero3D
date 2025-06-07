@@ -12,10 +12,22 @@ import {
 } from '../auth';
 import './Menu.css';
 
+function parseJwt(tok) {
+  try {
+    const base64 = tok.split('.')[1]               // segundo tramo
+                     .replace(/-/g, '+')            // URL → base64
+                     .replace(/_/g, '/');
+    const json = atob(base64);                      // decode base64
+    return JSON.parse(json);                        // -> objeto
+  } catch {
+    return null;      // token mal formado
+  }
+}
+
 /* ----- helper JWT → payload ------------------------------------ */
 function readUsername(tok) {
   try {
-    return jwt_decode(tok)?.username || null;
+    return parseJwt(tok)?.username || null;
   } catch {
     return null;
   }
@@ -62,7 +74,7 @@ const Menu = () => {
             <div className="user-panel">
               <p className="user-name">👋 {username}</p>
               <button type="button" className="logout-btn" onClick={logout}>
-                Salir
+                 🔑 Logout
               </button>
             </div>
           )}

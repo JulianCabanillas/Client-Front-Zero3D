@@ -2,15 +2,16 @@ import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import api from '../utils/api';      // ⬅️ nuestro Axios centralizado
-import { setAccess } from '../auth'; // ⬅️ guarda el access en memoria
+import { setAccess, getAccess } from '../auth'; // ⬅️ guarda el access en memoria
 
 import './Login.css'
 
 export default function Login() {
 
 
+  
     const [message, setMessage] = useState('Esperando...');
-    
+    const logged = Boolean(getAccess());
     const [state, setState] = useState({
       user:'',
       password:'',
@@ -18,6 +19,10 @@ export default function Login() {
       direct:''
     });
     
+    if(logged){
+      setMessage('Sal de tu sesión para logear o registrar...')
+    }
+
     const onSubmitLogin = async e => {
       e.preventDefault();
       setMessage("Login...");
@@ -57,8 +62,6 @@ export default function Login() {
     }
   };
 
-  
-
   const onChange = e => {
     const {name,value} = e.target;
     setState(prev =>({...prev, [name]: value}));
@@ -80,7 +83,7 @@ export default function Login() {
                 <input type="text" placeholder="Usuario" name="user" value={state.user} onInput={onChange}/><br /><br />
                 <input type="password" placeholder="Contraseña" name="password" value={state.password} onInput={onChange}/><br /><br />
                 <textarea className='invisible' type="text" placeholder="Direccion" readOnly/><br /><br />
-                <button type="submit" className='botton-entrar'>Entrar</button>
+                <button type="submit" className='botton-entrar' disabled={logged}>Entrar</button>
               </form>
             </th>
             <th>
@@ -91,7 +94,7 @@ export default function Login() {
                 <input type="password" placeholder="Contraseña" name="password" value={state.password} onInput={onChange}/><br /><br />
                 <input type="text" placeholder="Email" name="email" value={state.email} onInput={onChange}/><br /><br />
                 <textarea type="text" placeholder="Direccion" name="direct" value={state.direct} onInput={onChange}/><br /><br />
-                <button type="submit" className='botton-entrar'>Registrar</button>
+                <button type="submit" className='botton-entrar' disabled={logged}>Registrar</button>
               </form>
             </th>
           </tr>
@@ -100,7 +103,7 @@ export default function Login() {
       <div style="margin-top: 20px;">
       <p></p>
       <div style="margin-top: 20px;">
-        <p>Estado actual: {message}</p>
+        <p style={{fontSize: '25px'}}>{message}</p>
       </div>
     </div>
     </div>
