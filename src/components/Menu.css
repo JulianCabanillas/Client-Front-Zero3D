@@ -18,11 +18,53 @@
     min-width: 900px;
     margin: 0 auto;
 }
-.menu-right {
-    display: flex;
-    gap: 1.5rem;
-    margin-right: 20px; 
+
+.menu-right { position: relative; display: flex; gap: 1.5rem; }
+
+.user-panel{
+  position: absolute;
+  background-color: #f0a81887;
+  top: 52%;           /* pegado justo debajo del menú */
+  right: 0;
+  max-height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-shadow: 0 6px 12px rgb(223, 198, 13);
+  padding: 4px 4px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
 }
+.user-name   { 
+    font-weight: 900;
+    font-size: 1.8em; 
+    text-align: center;
+    align-self: center;
+}
+.logout-btn  { 
+    background: none; 
+    border: none; 
+    text-align: center; 
+    cursor: pointer; 
+    font-size: 1.8em;
+    font-weight: 900;
+    align-self: center;
+}
+
+.logout-btn:hover { 
+    background: #f6f6f6; 
+}
+
+/* Botón salir */
+.logout-btn{
+  background:none;
+  border:none;
+  text-align:left;
+  cursor:pointer;
+  margin-right: 8px;
+
+}
+.logout-btn p:hover{ background:#f6f6f6; }
 
 .menu-right h2 {
     padding-right: 2rem;
