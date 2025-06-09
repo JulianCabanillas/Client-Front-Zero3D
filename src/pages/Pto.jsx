@@ -1,9 +1,10 @@
 import { useState } from 'preact/hooks';
 import axios from 'axios';
+import api from '@/utils/api';
 import flechaIzq from '../assets/flechaIzq.png'
 import flechaDer from '../assets/flechaDer.png'
-
 import './Pto.css'
+import { setAccess, getAccess } from '../auth'; // ⬅️ guarda el access en memoria
 
 export default function Pto() {
 
@@ -19,7 +20,8 @@ export default function Pto() {
     const [activeOrder, setActiveOrder] = useState(false);
     const [loading, setLoading] = useState(false);
     const [progress, setProgress] = useState(0);
-    
+    const logged = Boolean(getAccess());
+
     
 
 // Patterns para dar formato a la salida del procersamiento =>
@@ -68,7 +70,34 @@ export default function Pto() {
         }
     };
 
-    
+    // Este es el handle que utilizamos para realizar el pedido:
+    async function handleOrder(e) {
+        e.preventDefault();
+
+        try {
+            // Mandamos el archivo y el precio calculado:
+            const fd = new FormData();
+            fd.append("stl_file", archiveStl);   
+            fd.append("total_euros", pto); 
+            fd.append("material", material);
+            fd.append("velocity", velocity);
+            fd.append("color", color);      
+
+            await api.post("orders/", fd, {
+            headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            alert("✅ Pedido registrado con éxito");
+            setActiveOrder(false);   // oculta botón hasta nuevo cálculo
+        } catch (err) {
+            console.error(err);
+            alert("❌ Error al crear el pedido (¿sesión caducada?)");
+            if (err.response?.status === 401) {
+            setActiveOrder(false);   // oculta botón hasta nuevo cálculo
+            }
+        }
+    }
+
 // Metodos para llamadas a la API:
     // Metodo para el boton de presupuesto:
     const onCalculate = async e => {
@@ -299,11 +328,17 @@ export default function Pto() {
                 </button>
             </form>
             
-            <form>
-                <button type="submit" className="boton-pto" disabled={!activeOrder} style={{ visibility: activeOrder ? 'visible' : 'hidden' }}>
+            {logged && (
+                <form onSubmit={handleOrder}>
+                    <button
+                    type="submit"
+                    className="boton-pto"
+                    disabled={!activeOrder}
+                    style={{ visibility: activeOrder ? "visible" : "hidden" }}>
                     <h2>✅ ¡REALIZAR Pedido! ✅</h2>
-                </button>
-            </form>
+                    </button>
+                </form>
+            )}
                                 
             
             
