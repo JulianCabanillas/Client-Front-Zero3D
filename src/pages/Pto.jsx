@@ -70,19 +70,21 @@ export default function Pto() {
         }
     };
 
+    // Este es el handle que utilizamos para realizar el pedido:
     async function handleOrder(e) {
         e.preventDefault();
 
         try {
+            // Mandamos el archivo y el precio calculado:
             const fd = new FormData();
-            fd.append("stl_file", archiveStl);   // nombre coincide con serializer
-            fd.append("total_euros", pto);       // precio calculado
+            fd.append("stl_file", archiveStl);   
+            fd.append("total_euros", pto); 
+            fd.append("material", material);
+            fd.append("velocity", velocity);
+            fd.append("color", color);      
 
             await api.post("orders/", fd, {
             headers: { "Content-Type": "multipart/form-data" },
-            onUploadProgress: ev =>{
-                /* opcional: barra de progreso de subida */
-            }
             });
 
             alert("✅ Pedido registrado con éxito");
@@ -91,7 +93,7 @@ export default function Pto() {
             console.error(err);
             alert("❌ Error al crear el pedido (¿sesión caducada?)");
             if (err.response?.status === 401) {
-            setIsLoggedIn(false);
+            setActiveOrder(false);   // oculta botón hasta nuevo cálculo
             }
         }
     }

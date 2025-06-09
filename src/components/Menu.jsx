@@ -12,19 +12,26 @@ import {
 } from '../auth';
 import './Menu.css';
 
+// Con esta funcion recogeremos el token y dividmos en tres 
+// parte, nosquedamos con payload y lo decodificamos a JSON:
 function parseJwt(tok) {
   try {
-    const base64 = tok.split('.')[1]               // segundo tramo
-                     .replace(/-/g, '+')            // URL → base64
+    // Dividimos y nos quedamos con el payload, parseamos
+    // de URL-safe Base64 a Base64:
+    const base64 = tok.split('.')[1]               
+                     .replace(/-/g, '+')            
                      .replace(/_/g, '/');
-    const json = atob(base64);                      // decode base64
-    return JSON.parse(json);                        // -> objeto
+    // Decodificamos:                 
+    const json = atob(base64);                      
+    return JSON.parse(json);                        
   } catch {
-    return null;      // token mal formado
+    // Si el token esta mal formado:
+    return null;    
   }
 }
 
-/* ----- helper JWT → payload ------------------------------------ */
+// Utiliza parseJWT para extraer la propiedad que necesitamos 
+// del payload
 function readUsername(tok) {
   try {
     return parseJwt(tok)?.username || null;
@@ -33,28 +40,29 @@ function readUsername(tok) {
   }
 }
 
+// Este es el componente principal que conforma y renderiza el menu:
 const Menu = () => {
-  /* 1. estado con el nombre actual ------------------------------ */
+  // Variable paraa mostrar el usuario logeado:
   const [username, setUsername] = useState(() => readUsername(getAccess()));
 
-  /* 2. escuchar cambios globales de auth ------------------------ */
+  // Necesitamos escuchar los cambios respecto a los usuarios y los tokens:
   useEffect(() => {
     const unsub = onAuthChange((tok) => setUsername(readUsername(tok)));
-    return unsub;                // cleanup al desmontar
+    return unsub;                
   }, []);
 
-  /* 3. logout ---------------------------------------------------- */
+  // Nos ayudamos de esa funcion para el logout del usuario y el 
+  // respectivo reinicio del token:
   const logout = () => {
-    clearAccess();               // limpia token en RAM
-    setUsername(null);           // oculta panel
-    route('/login');             // redirige
+    clearAccess();               
+    setUsername(null);           
+    route('/login');             
   };
 
-  /* 4. render ---------------------------------------------------- */
+  
   return (
     <header className="menu-header">
       <nav className="menu">
-        {/* --------- Lado izquierdo: logo --------- */}
         <div className="menu-left">
           <h2>
             <Link href="/" className="logo">
@@ -63,13 +71,10 @@ const Menu = () => {
           </h2>
         </div>
 
-        {/* --------- Lado derecho: enlaces -------- */}
         <div className="menu-right">
           <h2><Link href="/pto">🖨️ Imprimir</Link></h2>
           <h2><Link href="/about">👁️ Conócenos</Link></h2>
           <h2><Link href="/login">👥 Login</Link></h2>
-
-          {/* --------- Panel fijo si hay usuario --- */}
           {username && (
             <div className="user-panel">
               <p className="user-name">👋 {username}</p>
