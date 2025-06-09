@@ -52,7 +52,8 @@
 }
 
 .logout-btn:hover { 
-    background: #f6f6f6; 
+    border-radius: 25px;
+    background: #de6717; 
 }
 
 /* Botón salir */
@@ -64,7 +65,9 @@
   margin-right: 8px;
 
 }
-.logout-btn p:hover{ background:#f6f6f6; }
+.logout-btn p:hover{ 
+    background:#de6717 
+}
 
 .menu-right h2 {
     padding-right: 2rem;
