@@ -24,7 +24,7 @@ api.interceptors.response.use(
   // Utilizamos logica predefinida para la captura de errores:
   async err => {
     const orig = err.config;
-    if (err.response?.status === 401 && !orig._retry) {
+    if (err.response?.status === 401 && !orig._retry && !orig.url.endsWith('/token/refresh/')) {
       // Señal para indicar un solo intento:
       orig._retry = true;             
       try {

@@ -8,37 +8,10 @@ import {
   getAccess,
   setAccess,          //  por si necesitas usarlo aquí
   clearAccess,
-  onAuthChange
+  onAuthChange,
+  readUsername,
 } from '../auth';
 import './Menu.css';
-
-// Con esta funcion recogeremos el token y dividmos en tres 
-// parte, nosquedamos con payload y lo decodificamos a JSON:
-function parseJwt(tok) {
-  try {
-    // Dividimos y nos quedamos con el payload, parseamos
-    // de URL-safe Base64 a Base64:
-    const base64 = tok.split('.')[1]               
-                     .replace(/-/g, '+')            
-                     .replace(/_/g, '/');
-    // Decodificamos:                 
-    const json = atob(base64);                      
-    return JSON.parse(json);                        
-  } catch {
-    // Si el token esta mal formado:
-    return null;    
-  }
-}
-
-// Utiliza parseJWT para extraer la propiedad que necesitamos 
-// del payload
-function readUsername(tok) {
-  try {
-    return parseJwt(tok)?.username || null;
-  } catch {
-    return null;
-  }
-}
 
 // Este es el componente principal que conforma y renderiza el menu:
 const Menu = () => {
@@ -75,9 +48,10 @@ const Menu = () => {
           <h2><Link href="/pto">🖨️ Imprimir</Link></h2>
           <h2><Link href="/about">👁️ Conócenos</Link></h2>
           <h2><Link href="/login">👥 Login</Link></h2>
+
           {username && (
             <div className="user-panel">
-              <p className="user-name">👋 {username}</p>
+              <a><Link href="/profile" className="user-name">👋 {username}</Link></a>
               <button type="button" className="logout-btn" onClick={logout}>
                  🔑 Logout
               </button>
