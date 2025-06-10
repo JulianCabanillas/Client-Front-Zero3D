@@ -70,15 +70,9 @@ export default function Pto() {
         }
     };
 
+    
     async function handleOrder(e) {
         e.preventDefault();
-
-        // Validación previa
-        if (!archiveStl || !material || !velocity || !color) {
-            return alert(
-                'Faltan datos: asegúrate de subir un archivo y seleccionar material, velocidad y color.'
-            );
-        }
 
         const fd = new FormData();
         fd.append('stl_file', archiveStl);
@@ -88,11 +82,7 @@ export default function Pto() {
         fd.append('color', color);
 
         try {
-            const response = await axios.post('/api/orders/', fd, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-            withCredentials: true    // incluye cookies de sesión
-            });
-
+            const response = await axios.post('/api/orders/', fd);
             alert('✅ Pedido registrado con éxito');
             setActiveOrder(false);
         } catch (err) {
