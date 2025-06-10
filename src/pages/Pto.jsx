@@ -92,7 +92,7 @@ export default function Pto() {
             setActiveOrder(false);
             }
         }
-    }
+    };
 
 
     // Metodo para el boton de presupuesto:
