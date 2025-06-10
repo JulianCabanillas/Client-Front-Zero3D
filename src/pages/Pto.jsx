@@ -69,9 +69,9 @@ export default function Pto() {
             alert('Solo se permiten archivos .stl');
         }
     };
-
-    
-    async function handleOrder(e) {
+// Metodos para llamadas a la API:
+    // Metodo para el boton de pedido:
+    const handleOrder = async e => {
         e.preventDefault();
 
         const fd = new FormData();
@@ -87,14 +87,14 @@ export default function Pto() {
             setActiveOrder(false);
         } catch (err) {
             console.error(err);
-            alert('❌ Error al crear el pedido (¿sesión caducada?)');
+            alert('Error al crear el pedido.');
             if (err.response?.status === 401) {
             setActiveOrder(false);
             }
         }
     }
 
-// Metodos para llamadas a la API:
+
     // Metodo para el boton de presupuesto:
     const onCalculate = async e => {
         e.preventDefault();
