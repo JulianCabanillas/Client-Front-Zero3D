@@ -70,30 +70,36 @@ export default function Pto() {
         }
     };
 
-    // Este es el handle que utilizamos para realizar el pedido:
     async function handleOrder(e) {
         e.preventDefault();
 
-        try {
-            // Mandamos el archivo y el precio calculado:
-            const fd = new FormData();
-            fd.append("stl_file", archiveStl);   
-            fd.append("total_euros", pto); 
-            fd.append("material", material);
-            fd.append("velocity", velocity);
-            fd.append("color", color);      
+        // Validación previa
+        if (!archiveStl || !material || !velocity || !color) {
+            return alert(
+                'Faltan datos: asegúrate de subir un archivo y seleccionar material, velocidad y color.'
+            );
+        }
 
-            await api.post("orders/", fd, {
-            headers: { "Content-Type": "multipart/form-data" },
+        const fd = new FormData();
+        fd.append('stl_file', archiveStl);
+        fd.append('total_euros', pto);
+        fd.append('material', material);
+        fd.append('velocity', velocity);
+        fd.append('color', color);
+
+        try {
+            const response = await axios.post('/api/orders/', fd, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+            withCredentials: true    // incluye cookies de sesión
             });
 
-            alert("✅ Pedido registrado con éxito");
-            setActiveOrder(false);   // oculta botón hasta nuevo cálculo
+            alert('✅ Pedido registrado con éxito');
+            setActiveOrder(false);
         } catch (err) {
             console.error(err);
-            alert("❌ Error al crear el pedido (¿sesión caducada?)");
+            alert('❌ Error al crear el pedido (¿sesión caducada?)');
             if (err.response?.status === 401) {
-            setActiveOrder(false);   // oculta botón hasta nuevo cálculo
+            setActiveOrder(false);
             }
         }
     }
