@@ -1,14 +1,13 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
-import api from '../utils/api';      // ⬅️ nuestro Axios centralizado
-import { setAccess, getAccess } from '../auth'; // ⬅️ guarda el access en memoria
+import api from '../utils/api';      
+import { setAccess, getAccess } from '../auth'; 
 import './Login.css'
 
 export default function Login() {
 
 
-  
     const [message, setMessage] = useState('Esperando...');
     const logged = Boolean(getAccess());
     const [state, setState] = useState({
@@ -22,45 +21,55 @@ export default function Login() {
       setMessage('Sal de tu sesión para logear o registrar...')
     }
 
+    // Funcion que hara la peticion de login:
     const onSubmitLogin = async e => {
+      // Limpiamos configuraciones:
       e.preventDefault();
       setMessage("Login...");
+      // Realizamos la peticion ayudandonos del script de la api en js:
       try {
         const response = await api.post('/login_client/', {
           username: state.user,
           password: state.password
         });
-        setAccess(response.data.access); // 💾 guarda sólo en memoria
+        // Si todo correcto:
+        setAccess(response.data.access); 
         setMessage("Login exitoso");
-        route('/');                      // 👉 redirige a la página principal
+        route('/');                      
       } catch (error){
+        // Error de login:
         setMessage("Usuario o password no es correcto.");
         alert("Usuario o password no es correcto.");
         console.error('Error en la peticion:', error.response?.data || error.message);
       }
     }
 
+    // Funcion que hara la peticion de registro de usuario:
   const onSubmitRegistrer = async e => {
     e.preventDefault();
     setMessage("Registrando...");
+    // Igual que en el anterior llamamos al script:
     try {
       const response = await api.post('/register_client/', {
         username: state.user,
         password: state.password,
         email: state.email,
         direction: state.direct,
-        date_register: new Date().toISOString().split('T')[0]  // Fecha actual
+        date_register: new Date().toISOString().split('T')[0]  
       });
+      // Todo bien:
       setMessage("Registro exitoso");
       console.log('Respuesta:', response.data);
       onSubmitLogin(e)
     } catch (error) {
+      // Error de registro:
       setMessage("Error al registrar");
       alert("Error al registrar");
       console.error('Error:', error.response?.data || error.message);
     }
   };
 
+  // Funcion de esucha para cambios en los textos de los formularios:
   const onChange = e => {
     const {name,value} = e.target;
     setState(prev =>({...prev, [name]: value}));
